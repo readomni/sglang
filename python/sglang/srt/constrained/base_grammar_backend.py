@@ -188,6 +188,13 @@ def create_grammar_backend(server_args: ServerArgs, tokenizer, vocab_size):
             tokenizer=tokenizer,
             whitespace_pattern=server_args.constrained_json_whitespace_pattern,
         )
+    elif server_args.grammar_backend == "omni":
+        from sglang.srt.constrained.omni_backend import OmniGrammarBackend
+
+        grammar_backend = OmniGrammarBackend(
+            tokenizer=tokenizer,
+            vocab_size=vocab_size
+        )
     else:
         raise ValueError(f"Invalid grammar backend: {server_args.grammar_backend}")
 

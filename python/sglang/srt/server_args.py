@@ -755,7 +755,7 @@ class ServerArgs:
         parser.add_argument(
             "--grammar-backend",
             type=str,
-            choices=["xgrammar", "outlines", "llguidance"],
+            choices=["xgrammar", "outlines", "llguidance", "omni"],
             default=ServerArgs.grammar_backend,
             help="Choose the backend for grammar-guided decoding.",
         )
