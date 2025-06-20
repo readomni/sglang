@@ -27,7 +27,6 @@ logger = logging.getLogger(__name__)
 
 
 class BaseGrammarObject:
-
     def __init__(self):
         self._finished = False
 
@@ -188,6 +187,10 @@ def create_grammar_backend(
             tokenizer=tokenizer,
             whitespace_pattern=server_args.constrained_json_whitespace_pattern,
         )
+    elif server_args.grammar_backend == "omni":
+        from sglang.srt.constrained.omni_backend import OmniGrammarBackend
+
+        grammar_backend = OmniGrammarBackend(tokenizer, vocab_size=vocab_size)
     elif server_args.grammar_backend == "none":
         return None
     else:
